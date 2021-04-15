@@ -1,0 +1,27 @@
+{
+  "name": "hcs",
+  "version": "1.0.0",
+  "description": "Human Care System Exam",
+  "main": "node.js",
+  "scripts": {
+    "test": "mocha node.test.js",
+    "start": "node node.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andresij/hcs.git"
+  },
+  "author": "Andres Ijelman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andresij/hcs/issues"
+  },
+  "homepage": "https://github.com/andresij/hcs#readme",
+  "dependencies": {
+    "csv-parse": "^4.15.3",
+    "dotenv": "^8.2.0",
+    "lodash": "^4.17.21",
+    "mocha": "^8.3.2",
+    "mongodb": "^3.6.6"
+  }
+}
