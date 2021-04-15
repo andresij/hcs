@@ -1,7 +1,9 @@
 # Human Care Systems
 Integration tool that loads data from a CSV file, schedules some email communications, and then executes automated tests to ensure all data and logic was executed correctly
 
-Required: Nodejs (v10.23.2), Mongodb (4.4.1)
+Required: Nodejs (v10.23.2), Mongodb (4.4.1), npm (6.14.10)
+
+See file HCS Doc.pdf for screenshots
 
 # Clone repository
 git clone https://github.com/andresij/hcs.git
