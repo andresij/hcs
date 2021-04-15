@@ -68,11 +68,11 @@ async function verifyEmailSchedule (patientsId) {
     let dates = [];
     let tempDate
     // generate expected dates in array (YYYY-MM-DDDD)
-    for (let j=1; j<5; j++) {
+    [1, 2, 3, 4].forEach( v => {
         tempDate = new Date();
-        tempDate.setDate(new Date(today).getDate() + j);
+        tempDate.setDate(new Date(today).getDate() + v);
         dates.push(tempDate.toJSON().substr(0,10));
-    }          
+    }); 
     try {
         const client = await MongoClient.connect(MONGO_URI, { useUnifiedTopology: true }); 
         for (let j=0; j<patientsId.length; j++) {

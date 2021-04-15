@@ -31,24 +31,23 @@ async function scheduleMail () {
     let r = false;
     let mails = [];
     let date = [];
-    const today = new Date()            
-    date[1] = new Date();
-    date[1].setDate(new Date(today).getDate() + 1);
-    date[2] = new Date();
-    date[2].setDate(new Date(today).getDate() + 2);
-    date[3] = new Date();
-    date[3].setDate(new Date(today).getDate() + 3);
-    date[4] = new Date();
-    date[4].setDate(new Date(today).getDate() + 4);
+    let tempDate;
+    const today = new Date();
+    // generate expected dates in array
+    [1, 2, 3, 4].forEach( v => {
+        tempDate = new Date();
+        tempDate.setDate(new Date(today).getDate() + v);
+        date[v] = tempDate;
+    }); 
     try {
         const client = await MongoClient.connect(MONGO_URI, { useUnifiedTopology: true }); 
         
         const patients = await client.db(process.env.DB).collection(process.env.MONGO_PATIENTS).find({ "CONSENT" : "Y" }).toArray();
         console.log (`Found ${patients.length} patients with email consent.`);
         patients.forEach(patient => {
-            for (let j=1; j<5; j++) {
+            [1, 2, 3, 4].forEach( j => {
                 mails.push ({"name" : `Day ${j}`, "scheduled_date" : date[j], "email": patient['Email Address'], "patient_id" : patient._id});
-            }
+            }); 
         });
 
         const result = await client.db(process.env.DB).collection(process.env.MONGO_EMAILS).insertMany(mails)
